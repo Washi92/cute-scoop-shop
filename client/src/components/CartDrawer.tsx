@@ -3,6 +3,7 @@ import { X, Plus, Minus, Trash2, ShoppingBag } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { Link } from "wouter";
 import { toast } from "sonner";
+import { withBasePath } from "@/lib/basePath";
 
 interface CartDrawerProps {
   open: boolean;
@@ -49,7 +50,7 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                 Add some mystery scoops to get started!
               </p>
               <Link
-                href="/catalog"
+                href={withBasePath("/catalog")}
                 onClick={onClose}
                 className="btn-kawaii bg-primary text-primary-foreground text-sm"
               >

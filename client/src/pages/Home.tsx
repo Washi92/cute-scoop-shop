@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BestSellerPopup from "@/components/BestSellerPopup";
 import { useEffect, useRef, useState } from "react";
+import { withBasePath } from "@/lib/basePath";
 
 function SparkleField() {
   return (
@@ -87,7 +88,7 @@ export default function Home() {
                   Discover adorable mystery scoops packed with kawaii stationery, cute trinkets, and surprise goodies. Each scoop is a delightful surprise!
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                  <Link href="/catalog" className="btn-kawaii bg-primary text-primary-foreground text-base px-8 py-3 shadow-lg shadow-primary/25">
+                  <Link href={withBasePath("/catalog")} className="btn-kawaii bg-primary text-primary-foreground text-base px-8 py-3 shadow-lg shadow-primary/25">
                     Shop Mystery Scoops
                     <ArrowRight size={18} className="ml-2" />
                   </Link>
@@ -169,7 +170,7 @@ export default function Home() {
                 </h2>
                 <p className="text-foreground/60 mt-2">Each one is a surprise packed with love!</p>
               </div>
-              <Link href="/catalog" className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:text-kawaii-hot transition-colors">
+              <Link href={withBasePath("/catalog")} className="hidden md:flex items-center gap-1 text-sm font-semibold text-primary hover:text-kawaii-hot transition-colors">
                 View All <ArrowRight size={16} />
               </Link>
             </AnimatedSection>
@@ -183,7 +184,7 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-8 md:hidden">
-              <Link href="/catalog" className="btn-kawaii bg-primary text-primary-foreground text-sm">
+              <Link href={withBasePath("/catalog")} className="btn-kawaii bg-primary text-primary-foreground text-sm">
                 View All Scoops <ArrowRight size={16} className="ml-1" />
               </Link>
             </div>
@@ -196,7 +197,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 text-center">
               <div>
                 <div className="flex items-center justify-center gap-1 mb-1">
-                  {[1,2,3,4,5].map(s => <Star key={s} size={18} className="text-yellow-400 fill-yellow-400" />)}
+                  {[1, 2, 3, 4, 5].map(s => <Star key={s} size={18} className="text-yellow-400 fill-yellow-400" />)}
                 </div>
                 <p className="text-sm font-semibold text-foreground/70">4.9/5 Average Rating</p>
               </div>
@@ -298,7 +299,7 @@ export default function Home() {
                   <span className="text-2xl font-bold text-primary" style={{ fontFamily: "'Quicksand', sans-serif" }}>
                     ${packingVideoProduct.price.toFixed(2)}
                   </span>
-                  <Link href="/product/packing-video" className="btn-kawaii bg-primary text-primary-foreground text-sm">
+                  <Link href={withBasePath("/product/packing-video")} className="btn-kawaii bg-primary text-primary-foreground text-sm">
                     Learn More
                   </Link>
                 </div>
@@ -322,7 +323,7 @@ export default function Home() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2} className="text-center mt-8">
-              <Link href="/faq" className="btn-kawaii bg-white text-primary border-2 border-primary/20 text-sm hover:border-primary/40">
+              <Link href={withBasePath("/faq")} className="btn-kawaii bg-white text-primary border-2 border-primary/20 text-sm hover:border-primary/40">
                 View All FAQs <ArrowRight size={16} className="ml-1" />
               </Link>
             </AnimatedSection>

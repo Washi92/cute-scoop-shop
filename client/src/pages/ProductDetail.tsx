@@ -11,6 +11,7 @@ import ProductCard from "@/components/ProductCard";
 import { ShoppingBag, Truck, Shield, Clock, ChevronLeft, Check, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 import BestSellerPopup from "@/components/BestSellerPopup";
+import { withBasePath } from "@/lib/basePath";
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
@@ -49,7 +50,7 @@ export default function ProductDetail() {
             <span className="text-6xl block mb-4">🍨</span>
             <h1 className="text-2xl font-bold text-foreground mb-2" style={{ fontFamily: "'Quicksand', sans-serif" }}>Product Not Found</h1>
             <p className="text-muted-foreground mb-6">This scoop seems to have melted away!</p>
-            <Link href="/catalog" className="btn-kawaii bg-primary text-primary-foreground text-sm">
+            <Link href={withBasePath("/catalog")} className="btn-kawaii bg-primary text-primary-foreground text-sm">
               Back to Catalog
             </Link>
           </div>
@@ -77,9 +78,9 @@ export default function ProductDetail() {
         {/* Breadcrumb */}
         <div className="container py-4">
           <nav className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <Link href={withBasePath("/")} className="hover:text-primary transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/catalog" className="hover:text-primary transition-colors">Catalog</Link>
+            <Link href={withBasePath("/catalog")} className="hover:text-primary transition-colors">Catalog</Link>
             <span>/</span>
             <span className="text-foreground font-medium">{product.name}</span>
           </nav>
@@ -147,11 +148,10 @@ export default function ProductDetail() {
                       <button
                         key={v.name}
                         onClick={() => setSelectedVariant(v.name)}
-                        className={`px-4 py-2 rounded-full text-sm font-semibold border-2 transition-all ${
-                          selectedVariant === v.name
+                        className={`px-4 py-2 rounded-full text-sm font-semibold border-2 transition-all ${selectedVariant === v.name
                             ? "border-primary bg-primary/10 text-primary"
                             : "border-kawaii-pink/20 text-foreground/60 hover:border-primary/40"
-                        }`}
+                          }`}
                       >
                         {v.name} — ${v.price.toFixed(2)}
                       </button>

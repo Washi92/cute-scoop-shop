@@ -2,6 +2,7 @@
 import { Link } from "wouter";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { withBasePath } from "@/lib/basePath";
 
 export default function NotFound() {
   return (
@@ -20,10 +21,10 @@ export default function NotFound() {
             The page you're looking for doesn't exist. Maybe it was scooped up by someone else!
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/" className="btn-kawaii bg-primary text-primary-foreground text-sm px-8 py-3">
+            <Link href={withBasePath("/")} className="btn-kawaii bg-primary text-primary-foreground text-sm px-8 py-3">
               Go Home
             </Link>
-            <Link href="/catalog" className="btn-kawaii bg-white text-primary border-2 border-primary/20 text-sm px-8 py-3">
+            <Link href={withBasePath("/catalog")} className="btn-kawaii bg-white text-primary border-2 border-primary/20 text-sm px-8 py-3">
               Browse Scoops
             </Link>
           </div>

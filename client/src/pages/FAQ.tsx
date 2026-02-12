@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { Mail } from "lucide-react";
+import { withBasePath } from "@/lib/basePath";
 
 export default function FAQ() {
   return (
@@ -37,7 +38,7 @@ export default function FAQ() {
             <p className="text-sm text-foreground/60 mb-6">
               We're here to help! Reach out and we'll get back to you as soon as possible.
             </p>
-            <Link href="/contact" className="btn-kawaii bg-primary text-primary-foreground text-sm inline-flex items-center gap-2">
+            <Link href={withBasePath("/contact")} className="btn-kawaii bg-primary text-primary-foreground text-sm inline-flex items-center gap-2">
               <Mail size={16} />
               Contact Us
             </Link>

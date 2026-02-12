@@ -4,6 +4,7 @@ import { Link, useLocation } from "wouter";
 import { ShoppingBag, Search, Menu, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import CartDrawer from "./CartDrawer";
+import { withBasePath } from "@/lib/basePath";
 
 export default function Header() {
   const [location] = useLocation();
@@ -12,10 +13,10 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/catalog", label: "Catalog" },
-    { href: "/faq", label: "FAQ" },
-    { href: "/contact", label: "Contact" },
+    { href: withBasePath("/"), label: "Home" },
+    { href: withBasePath("/catalog"), label: "Catalog" },
+    { href: withBasePath("/faq"), label: "FAQ" },
+    { href: withBasePath("/contact"), label: "Contact" },
   ];
 
   return (
@@ -51,7 +52,7 @@ export default function Header() {
           </button>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href={withBasePath("/")} className="flex items-center gap-2 group">
             <span className="text-xl md:text-2xl font-bold text-primary" style={{ fontFamily: "'Quicksand', sans-serif" }}>
               Cute Mashula
             </span>
