@@ -4,6 +4,7 @@ import { ShoppingBag } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import type { Product } from "@/lib/data";
 import { toast } from "sonner";
+import { withBasePath } from "@/lib/basePath";
 
 interface ProductCardProps {
   product: Product;
@@ -28,7 +29,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Link href={`/product/${product.id}`} className="group block">
+    <Link href={withBasePath(`/product/${product.id}`)} className="group block">
       <div className="relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1 border border-kawaii-pink/10">
         {/* Bow accent */}
         <div className="absolute top-3 left-3 z-10 text-kawaii-pink opacity-30 text-2xl pointer-events-none" aria-hidden="true">
