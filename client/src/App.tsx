@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "./components/ScrollToTop";
+import BestSellerPopup from "./components/BestSellerPopup";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -39,6 +40,7 @@ function App() {
           <TooltipProvider>
             <Toaster />
             <ScrollToTop />
+            <BestSellerPopup />
             <Routes />
           </TooltipProvider>
         </CartProvider>

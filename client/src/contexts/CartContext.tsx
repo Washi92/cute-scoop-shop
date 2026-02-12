@@ -18,6 +18,7 @@ interface CartContextType {
   totalPrice: number;
   isCartOpen: boolean;
   setIsCartOpen: (open: boolean) => void;
+  lastAddedTime: number;
 }
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -25,6 +26,7 @@ const CartContext = createContext<CartContextType | null>(null);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [lastAddedTime, setLastAddedTime] = useState(0);
 
   const addItem = useCallback((product: Product, variant: string, addVideo: boolean) => {
     setItems(prev => {
@@ -39,6 +41,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return [...prev, { product, variant, quantity: 1, addPackingVideo: addVideo }];
     });
     setIsCartOpen(true);
+    setLastAddedTime(Date.now());
   }, []);
 
   const removeItem = useCallback((productId: string, variant: string) => {
@@ -73,6 +76,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     <CartContext.Provider value={{
       items, addItem, removeItem, updateQuantity, clearCart,
       totalItems, totalPrice, isCartOpen, setIsCartOpen,
+      lastAddedTime,
     }}>
       {children}
     </CartContext.Provider>

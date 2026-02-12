@@ -8,7 +8,6 @@ import FAQAccordion from "@/components/FAQAccordion";
 import { faqs } from "@/lib/data";
 import { Link } from "wouter";
 import { SlidersHorizontal, X } from "lucide-react";
-import BestSellerPopup from "@/components/BestSellerPopup";
 
 type SortOption = "featured" | "price-low" | "price-high" | "newest";
 type ThemeFilter = "all" | "kawaii" | "pastel" | "character";
@@ -192,7 +191,6 @@ export default function Catalog() {
       </main>
 
       <Footer />
-      <BestSellerPopup />
     </div>
   );
 }

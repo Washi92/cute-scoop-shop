@@ -5,35 +5,31 @@ import { X } from "lucide-react";
 import { Link } from "wouter";
 import { products } from "@/lib/data";
 import ReviewStars from "./ReviewStars";
+import { useCart } from "@/contexts/CartContext";
+import { withBasePath } from "@/lib/basePath";
 
 export default function BestSellerPopup() {
+  const { lastAddedTime } = useCart();
   const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
+  // We don't use dismissed state for "every time" logic, or we reset it on new add
 
   const bestSeller = products.find(p => p.badge === "Best Seller") ?? products[0];
 
   useEffect(() => {
-    // Check if user already dismissed this session
-    const wasDismissed = sessionStorage.getItem("bestSellerDismissed");
-    if (wasDismissed) {
-      setDismissed(true);
-      return;
-    }
-
-    const timer = setTimeout(() => {
+    // Show popup when an item is added to cart (timestamp updates)
+    if (lastAddedTime > 0) {
       setVisible(true);
-    }, 5000); // Show after 5 seconds
 
-    return () => clearTimeout(timer);
-  }, []);
+      // Optional: Auto-hide after 10 seconds if ignored? 
+      // For now let's keep it until dismissed manually or page change
+    }
+  }, [lastAddedTime]);
 
   const handleDismiss = () => {
     setVisible(false);
-    setDismissed(true);
-    sessionStorage.setItem("bestSellerDismissed", "true");
   };
 
-  if (dismissed || !visible) return null;
+  if (!visible) return null;
 
   return (
     <div
@@ -59,7 +55,7 @@ export default function BestSellerPopup() {
       </div>
 
       {/* Product Preview */}
-      <Link href={`/product/${bestSeller.id}`} onClick={handleDismiss} className="block">
+      <Link href={withBasePath(`/product/${bestSeller.id}`)} onClick={handleDismiss} className="block">
         <div className="flex gap-3 p-4 hover:bg-kawaii-blush/30 transition-colors">
           <img
             src={bestSeller.image}
@@ -86,7 +82,7 @@ export default function BestSellerPopup() {
       {/* CTA */}
       <div className="px-4 pb-4">
         <Link
-          href={`/product/${bestSeller.id}`}
+          href={withBasePath(`/product/${bestSeller.id}`)}
           onClick={handleDismiss}
           className="block w-full text-center btn-kawaii bg-primary text-primary-foreground text-sm py-2"
         >
