@@ -12,16 +12,19 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Policies from "./pages/Policies";
 
-function Router() {
+function Routes() {
+  // Determine base path - empty for dev, /cute-scoop-shop for production
+  const base = import.meta.env.PROD ? "/cute-scoop-shop" : "";
+
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/catalog"} component={Catalog} />
-      <Route path={"/product/:id"} component={ProductDetail} />
-      <Route path={"/faq"} component={FAQ} />
-      <Route path={"/contact"} component={Contact} />
-      <Route path={"/policies/:type"} component={Policies} />
-      <Route path={"/404"} component={NotFound} />
+      <Route path={`${base}/`} component={Home} />
+      <Route path={`${base}/catalog`} component={Catalog} />
+      <Route path={`${base}/product/:id`} component={ProductDetail} />
+      <Route path={`${base}/faq`} component={FAQ} />
+      <Route path={`${base}/contact`} component={Contact} />
+      <Route path={`${base}/policies/:type`} component={Policies} />
+      <Route path={`${base}/404`} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -34,7 +37,7 @@ function App() {
         <CartProvider>
           <TooltipProvider>
             <Toaster />
-            <Router />
+            <Routes />
           </TooltipProvider>
         </CartProvider>
       </ThemeProvider>
