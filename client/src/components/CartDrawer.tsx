@@ -76,7 +76,7 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                       </h3>
                       <p className="text-xs text-muted-foreground">{item.variant}</p>
                       {item.addPackingVideo && (
-                        <p className="text-xs text-kawaii-coral mt-1">+ Packing Video ($7.00)</p>
+                        <p className="text-xs text-kawaii-coral mt-1">+ Packing Video (€7.00)</p>
                       )}
                       <div className="flex items-center justify-between mt-2">
                         <div className="flex items-center gap-2 bg-white rounded-full border border-kawaii-pink/20 px-1">

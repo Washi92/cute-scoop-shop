@@ -1,4 +1,3 @@
-
 import express from "express";
 import { createServer } from "http";
 import path from "path";
@@ -124,7 +123,7 @@ async function startServer() {
       // Create a PaymentIntent with the order amount and currency
       const paymentIntent = await stripe.paymentIntents.create({
         amount: Math.round(total * 100), // Stripe expects amount in cents
-        currency: "usd",
+        currency: "eur",
         // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
         automatic_payment_methods: {
           enabled: true,
@@ -140,12 +139,17 @@ async function startServer() {
     }
   });
 
+  app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    next();
+  });
+
   // Handle client-side routing - serve index.html for all routes
   app.get("*", (_req, res) => {
     res.sendFile(path.join(staticPath, "index.html"));
   });
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 5000;
 
   server.listen(port, () => {
     console.log(`Server running on http://localhost:${port}/`);

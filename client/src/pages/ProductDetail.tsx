@@ -170,7 +170,7 @@ export default function ProductDetail() {
                   />
                   <div>
                     <span className="font-semibold text-sm text-foreground" style={{ fontFamily: "'Quicksand', sans-serif" }}>
-                      Add Packing Video (+$7.00)
+                      Add Packing Video (+€7.00)
                     </span>
                     <p className="text-xs text-muted-foreground mt-1">
                       We'll film your order being packed and post it on TikTok!
@@ -192,7 +192,7 @@ export default function ProductDetail() {
               <div className="grid grid-cols-3 gap-3">
                 <div className="text-center p-3 bg-kawaii-blush/30 rounded-xl">
                   <Truck size={18} className="mx-auto text-primary mb-1" />
-                  <p className="text-xs text-foreground/60 font-medium">Free shipping $50+</p>
+                  <p className="text-xs text-foreground/60 font-medium">Free shipping €50+</p>
                 </div>
                 <div className="text-center p-3 bg-kawaii-blush/30 rounded-xl">
                   <Clock size={18} className="mx-auto text-primary mb-1" />

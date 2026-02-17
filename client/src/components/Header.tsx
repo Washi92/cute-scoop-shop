@@ -28,13 +28,13 @@ export default function Header() {
             💗 Orders placed after January 28th will start shipping on February 7th. Thank you for your patience 💗
           </span>
           <span className="px-8">
-            💗 Free shipping on orders over $50! 💗
+            💗 Free shipping on orders over €50! 💗
           </span>
           <span className="px-8">
             💗 Orders placed after January 28th will start shipping on February 7th. Thank you for your patience 💗
           </span>
           <span className="px-8">
-            💗 Free shipping on orders over $50! 💗
+            💗 Free shipping on orders over €50! 💗
           </span>
         </div>
       </div>

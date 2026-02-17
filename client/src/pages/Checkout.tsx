@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { loadStripe } from "@stripe/stripe-js";
@@ -13,8 +12,8 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
-// This is a placeholder key. You should replace it with your actual publishable key.
-const stripePromise = loadStripe("pk_test_51HG7sLIsLd0s3rJ7X7X7X7X7X7X7X7X7X7X7X7X7X7X7X7X7X7X7X7X7X7X7X7");
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || "");
+
 
 function CheckoutForm() {
     const stripe = useStripe();
@@ -93,7 +92,7 @@ function CheckoutForm() {
                         Processing...
                     </>
                 ) : (
-                    `Pay $${totalPrice.toFixed(2)}`
+                    `Pay €${totalPrice.toFixed(2)}`
                 )}
             </Button>
             {message && <div id="payment-message" className="text-sm text-red-500 mt-2">{message}</div>}
@@ -197,14 +196,14 @@ export default function Checkout() {
                                                 </div>
                                             </div>
                                             <p className="font-medium">
-                                                ${((item.product.variants?.find(v => v.name === item.variant)?.price ?? item.product.price) * item.quantity + (item.addPackingVideo ? 7 * item.quantity : 0)).toFixed(2)}
+                                                €{((item.product.variants?.find(v => v.name === item.variant)?.price ?? item.product.price) * item.quantity + (item.addPackingVideo ? 7 * item.quantity : 0)).toFixed(2)}
                                             </p>
                                         </div>
                                     ))}
                                     <Separator className="my-4" />
                                     <div className="flex justify-between font-bold text-lg">
                                         <span>Total</span>
-                                        <span>${totalPrice.toFixed(2)}</span>
+                                        <span>€{totalPrice.toFixed(2)}</span>
                                     </div>
                                 </div>
                             </CardContent>

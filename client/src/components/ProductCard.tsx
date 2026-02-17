@@ -62,9 +62,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           <p className="text-xs text-muted-foreground mt-1 line-clamp-1">{product.hook}</p>
           <div className="flex items-center justify-between mt-3">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-lg text-primary">${product.price.toFixed(2)}</span>
+              <span className="font-bold text-lg text-primary">€{product.price.toFixed(2)}</span>
               {product.comparePrice && (
-                <span className="text-sm text-muted-foreground line-through">${product.comparePrice.toFixed(2)}</span>
+                <span className="text-sm text-muted-foreground line-through">€{product.comparePrice.toFixed(2)}</span>
               )}
             </div>
             <button
