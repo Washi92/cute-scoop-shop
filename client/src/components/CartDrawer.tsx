@@ -125,12 +125,9 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
               <span className="text-xl font-bold text-primary">${totalPrice.toFixed(2)}</span>
             </div>
             <p className="text-xs text-muted-foreground">Shipping calculated at checkout</p>
-            <button
-              onClick={() => toast.success("Checkout feature coming soon!")}
-              className="w-full btn-kawaii bg-primary text-primary-foreground text-base py-3"
-            >
+            <Link href="/checkout" onClick={onClose} className="w-full btn-kawaii bg-primary text-primary-foreground text-base py-3 block text-center">
               Checkout
-            </button>
+            </Link>
             <button
               onClick={clearCart}
               className="w-full text-sm text-muted-foreground hover:text-destructive transition-colors text-center py-1"
