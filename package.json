@@ -7,9 +7,10 @@
     "dev": "vite --host",
     "dev:server": "tsx watch --env-file=.env.local server/index.ts",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "postbuild": "node -e \"import('node:fs').then(f=>f.copyFileSync('dist/public/index.html','dist/public/404.html'))\"",
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
-    "deploy": "gh-pages -d dist/public",
+    "deploy": "set DEPLOY_TARGET=ghpages&& set VITE_DEPLOY_TARGET=ghpages&& vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist && gh-pages -d dist/public",
     "check": "tsc --noEmit",
     "format": "prettier --write ."
   },

@@ -19,8 +19,8 @@ const Checkout = lazy(() => import("./pages/Checkout"));
 const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
 
 function Routes() {
-  // Determine base path - empty for dev, /cute-scoop-shop for production
-  const base = import.meta.env.PROD ? "/cute-scoop-shop" : "";
+  // Determine base path - only use /cute-scoop-shop for GitHub Pages deployment
+  const base = import.meta.env.VITE_DEPLOY_TARGET === "ghpages" ? "/cute-scoop-shop" : "";
 
   return (
     <Suspense fallback={null}>

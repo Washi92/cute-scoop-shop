@@ -18,7 +18,7 @@ const TRIM_TARGET_BYTES = Math.floor(MAX_LOG_SIZE_BYTES * 0.6); // Trim to 60% t
 
 // https://vitejs.dev/config/
 const isProduction = process.env.NODE_ENV === "production";
-const BASE_URL = isProduction ? "/cute-scoop-shop/" : "/";
+const BASE_URL = process.env.DEPLOY_TARGET === "ghpages" ? "/cute-scoop-shop/" : "/";
 
 type LogSource = "browserConsole" | "networkRequests" | "sessionReplay";
 
