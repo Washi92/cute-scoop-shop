@@ -98,7 +98,7 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                         </div>
                         <div className="flex items-center gap-2">
                           <span className="font-bold text-sm text-primary">
-                            ${((unitPrice + (item.addPackingVideo ? 7 : 0)) * item.quantity).toFixed(2)}
+                            €{((unitPrice + (item.addPackingVideo ? 7 : 0)) * item.quantity).toFixed(2)}
                           </span>
                           <button
                             onClick={() => removeItem(item.product.id, item.variant)}
@@ -122,7 +122,7 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
           <div className="border-t border-kawaii-pink/20 px-6 py-4 space-y-3">
             <div className="flex justify-between items-center">
               <span className="font-semibold" style={{ fontFamily: "'Quicksand', sans-serif" }}>Subtotal</span>
-              <span className="text-xl font-bold text-primary">${totalPrice.toFixed(2)}</span>
+              <span className="text-xl font-bold text-primary">€{totalPrice.toFixed(2)}</span>
             </div>
             <p className="text-xs text-muted-foreground">Shipping calculated at checkout</p>
             <Link href="/checkout" onClick={onClose} className="w-full btn-kawaii bg-primary text-primary-foreground text-base py-3 block text-center">

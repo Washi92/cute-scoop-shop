@@ -70,7 +70,7 @@ export default function BestSellerPopup() {
             <ReviewStars rating={5} size={12} />
             <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{bestSeller.hook}</p>
             <div className="flex items-center gap-2 mt-2">
-              <span className="font-bold text-primary">${bestSeller.price.toFixed(2)}</span>
+              <span className="font-bold text-primary">€{bestSeller.price.toFixed(2)}</span>
               <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">
                 Best Seller
               </span>

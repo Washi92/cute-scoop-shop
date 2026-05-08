@@ -13,24 +13,30 @@ import ProductDetail from "./pages/ProductDetail";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Policies from "./pages/Policies";
-import Checkout from "./pages/Checkout";
+import { Suspense, lazy } from "react";
+
+const Checkout = lazy(() => import("./pages/Checkout"));
+const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
 
 function Routes() {
   // Determine base path - empty for dev, /cute-scoop-shop for production
   const base = import.meta.env.PROD ? "/cute-scoop-shop" : "";
 
   return (
-    <Switch>
-      <Route path={`${base}/`} component={Home} />
-      <Route path={`${base}/catalog`} component={Catalog} />
-      <Route path={`${base}/product/:id`} component={ProductDetail} />
-      <Route path={`${base}/faq`} component={FAQ} />
-      <Route path={`${base}/contact`} component={Contact} />
-      <Route path={`${base}/policies/:type`} component={Policies} />
-      <Route path={`${base}/checkout`} component={Checkout} />
-      <Route path={`${base}/404`} component={NotFound} />
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={null}>
+      <Switch>
+        <Route path={`${base}/`} component={Home} />
+        <Route path={`${base}/catalog`} component={Catalog} />
+        <Route path={`${base}/product/:id`} component={ProductDetail} />
+        <Route path={`${base}/faq`} component={FAQ} />
+        <Route path={`${base}/contact`} component={Contact} />
+        <Route path={`${base}/policies/:type`} component={Policies} />
+        <Route path={`${base}/checkout`} component={Checkout} />
+        <Route path={`${base}/order-confirmation`} component={OrderConfirmation} />
+        <Route path={`${base}/404`} component={NotFound} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 

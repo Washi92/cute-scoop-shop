@@ -185,7 +185,7 @@ export default function ProductDetail() {
                 className="w-full btn-kawaii bg-primary text-primary-foreground text-lg py-4 shadow-lg shadow-primary/25 flex items-center justify-center gap-2"
               >
                 <ShoppingBag size={20} />
-                Add to Cart — ${totalPrice.toFixed(2)}
+                Add to Cart — €{totalPrice.toFixed(2)}
               </button>
 
               {/* Trust Signals */}
